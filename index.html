@@ -109,6 +109,48 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
     <script>
+        // Countdown Timer to Midnight
+        function updateCountdown() {
+            const now = new Date();
+            const target = new Date();
+            target.setHours(20, 42, 0, 0); // Set target time to midnight (12:00 AM next day)
+
+            const timeLeft = target - now;
+
+            if (timeLeft <= 0) {
+                // If it's 12 AM or later, show the main page
+                document.getElementById('countdownPage').classList.remove('show');
+                document.getElementById('mainPage').classList.add('show');
+                
+                // Trigger confetti and play background music
+                confetti({
+                    particleCount: 150,
+                    angle: 90,
+                    spread: 180,
+                    origin: { x: 0.5, y: 0.5 },
+                    colors: ['#ff4081', '#ff9900', '#4caf50', '#3f51b5'],
+                });
+
+                var audio = document.getElementById('background-music');
+                audio.muted = false;
+                audio.play().catch(error => console.log("Autoplay blocked:", error));
+            } else {
+                // Update countdown timer
+                const hours = Math.floor((timeLeft / (1000 * 60 * 60)) % 24);
+                const minutes = Math.floor((timeLeft / (1000 * 60)) % 60);
+                const seconds = Math.floor((timeLeft / 1000) % 60);
+
+                document.getElementById('countdownTimer').textContent = 
+                  `${hours}h ${minutes}m ${seconds}s`;
+
+                // Repeat the function every second
+                setTimeout(updateCountdown, 1000);
+            }
+        }
+
+        // Start the countdown
+        updateCountdown();
+
         // Confetti effect on page load
         window.onload = function() {
             confetti({
