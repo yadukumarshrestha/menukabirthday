@@ -1,0 +1,192 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f3f4f6;
+}
+
+.welcome-animation {
+    font-size: 2em;
+    color: #ff4081;
+    margin-top: 20px;
+    animation: fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+#birthday-message {
+    margin: 20px;
+    font-size: 1.2em;
+    color: #0f12bd;
+}
+
+#gallery {
+    background-image: url('../assets/images/1.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 40px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 600px;
+    margin: 20px auto;
+    text-align: center;
+    color: #fff;
+    backdrop-filter: blur(0px); /* Optional: Blur effect */
+}
+
+#gallery h2 {
+    font-size: 2.8em;
+    color: #3498db;
+    margin-bottom: 20px;
+    font-weight: 500;
+    text-transform: none;
+    letter-spacing: 1px;
+    text-align: center;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    font-family: 'Merriweather', serif;
+}
+
+#gallery p {
+    margin: 15px 0;
+    font-size: 1.2em;
+}
+
+#gallery .link-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+#gallery a {
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    padding: 15px 20px;
+    width: 80%;
+    max-width: 300px;
+    border-radius: 5px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.5);
+    background-image: url('button-background.jpg');
+    background-size: cover;
+    background-position: center;
+    transition: all 0.3s ease;
+}
+
+#gallery a:hover {
+    background-color: #ff4081;
+    color: #ffffff;
+    transform: scale(1.05);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#gallery img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#friend-messages {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: non;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: 15px auto;
+    font-family: Arial, sans-serif;
+}
+
+#friend-messages .message {
+    margin: 15px 0;
+    padding: 5px;
+    background-color: #e2849f; /* Soft pink background for messages */
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+#friend-messages .message:hover {
+    background-color: #ff4081;
+    color: rgb(240, 240, 240);
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+#friend-messages .message .sender {
+    font-weight: bold;
+    color: #333;
+    font-size: 1.1em;
+    margin-bottom: 5px;
+}
+
+#friend-messages .message .text {
+    font-size: 1.1em;
+    color: #333;
+    line-height: 1.6;
+}
+
+#friend-messages .message .text:before {
+    content: "💌 "; /* Add an icon before the message */
+    color: #ff4081;
+}
+
+#friend-messages .message-time {
+    font-size: 0.9em;
+    color: #888;
+    position: absolute;
+    bottom: 10px;
+    right: 15px;
+}
+
+#countdown {
+    font-size: 1.5em;
+    color: #ff4081;
+    margin-top: 20px;
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #ff4081;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #e63950;
+}
+
+#celebration-text {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 3em;
+    color: #ff4081;
+    font-weight: bold;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0); }
+}
+
+#audio {
+    display: none;
+}

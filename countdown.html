@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown to Birthday Celebration</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+    <style>
+        /* Center countdown on the page */
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f3f4f6;
+            font-family: Arial, sans-serif;
+        }
+
+        #countdown-blocker {
+            text-align: center;
+        }
+
+        #countdown-timer {
+            font-size: 3em;
+            color: #ff4081;
+        }
+
+        /* Hide content until countdown ends */
+        #content {
+            display: none;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Countdown Timer Display -->
+    <div id="countdown-blocker">
+        <p>Countdown to the celebration!</p>
+        <div id="countdown-timer">Loading...</div>
+    </div>
+
+    
+
+    <script>
+        // Set the target time to 12:00 AM (midnight)
+        var targetTime = new Date();
+        targetTime.setHours(24, 0, 0, 0); // Midnight
+
+        // Countdown logic
+        var countdownElement = document.getElementById('countdown-timer');
+        var blockerElement = document.getElementById('countdown-blocker');
+        var contentElement = document.getElementById('content');
+        
+        function updateCountdown() {
+            var currentTime = new Date();
+            var remainingTime = targetTime - currentTime;
+
+            if (remainingTime > 0) {
+                var hours = Math.floor(remainingTime / (1000 * 60 * 60));
+                var minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
+
+                countdownElement.textContent = 
+                    `${hours}:${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+
+                setTimeout(updateCountdown, 1000);  // Update every second
+            } else {
+                // Countdown ends: hide countdown and show content
+                blockerElement.style.display = 'none';
+                contentElement.style.display = 'block';
+                
+                // Launch confetti celebration
+                confetti({
+                    particleCount: 150,
+                    angle: 90,
+                    spread: 180,
+                    origin: { x: 0.5, y: 0.5 },
+                    colors: ['#ff4081', '#ff9900', '#4caf50', '#3f51b5'],
+                
+                });
+            }
+        }
+
+        // Start countdown on page load
+        window.onload = updateCountdown;
+    </script>
+
+</body>
+</html>

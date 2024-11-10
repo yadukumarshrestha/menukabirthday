@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday!</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+        
+    <style>
+        /* Static background image for body */
+        body {
+            margin: 0;
+            height: 100vh;
+            background-image: url('../assets/images/1.jpg');  /* Replace with your image */
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Celebration Animation */
+        #welcome-message {
+            font-size: 3em;
+            color: #ff4081;
+            text-align: center;
+            font-weight: bold;
+            animation: bounce 1s infinite;
+        }
+
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0); }
+        }
+
+        /* Styling for Birthday Messages */
+        #birthday-message {
+            font-size: 1.5em;
+            text-align: center;
+            color: #333;
+            margin-top: 20px;
+        }
+
+        /* Photo Memories Section without background */
+        #gallery {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.2em;
+            background: none;  /* Removes the background */
+            padding: 0; /* Optional: removes any padding */
+            box-shadow: none; /* Optional: removes any box shadow */
+        }
+
+        #friend-messages {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .message {
+            margin-bottom: 10px;
+        }
+
+        #countdown {
+            font-size: 2em;
+            color: #ff4081;
+            text-align: center;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Welcome Animation -->
+    <div id="welcome-message">Happy Birthday, मेनुका !</div>
+
+    <!-- Personalized Birthday Message -->
+    <section id="birthday-message">
+        <p>Happy Birthday! to you  Menuka, Here’s to the memories, laughs, and moments we've shared. Hope your day is as amazing as you are!</p>
+    </section>
+
+    <!-- Image Gallery -->
+    <section id="gallery">
+        <h2>Photo Memories</h2>
+        <p><a href="https://photos.app.goo.gl/iKMc1bXEHnAwV9j49">फोटो हेर्नि भए हेर है नयाँ फोटो</a></p>  
+        <p><a href="https://photos.app.goo.gl/RNzJT6DvZk7p2E2o8">यो चाही पुरानो फोटो</a></p>  
+    </section>
+
+    <!-- Custom Background Music (muted initially to bypass autoplay restrictions) -->
+    <audio id="background-music" autoplay muted loop>
+        <source src="../assets/music/songs.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Messages from Friends and Family -->
+    <section id="friend-messages">
+        <h2>Messages from your Friends</h2>
+        
+        <div class="message">
+          <p>".....................!" - ...........  </p>
+      </div>
+        <div class="message">
+            <p>"Happy Birthday, Menuka Miss!" - Rasmita</p>
+        </div>
+        <div class="message">
+          <p>"I Love You " - Yog </p>
+      </div>
+    </section>
+
+    <!-- Birthday Countdown -->
+    <div id="countdown"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+    <script>
+        // Confetti effect on page load
+        window.onload = function() {
+            confetti({
+                particleCount: 150,  // Number of confetti particles
+                angle: 90,           // Angle of the explosion
+                spread: 180,         // How far the confetti spreads
+                origin: { x: 0.5, y: 0.5 },  // Center of the page
+                colors: ['#ff4081', '#ff9900', '#4caf50', '#3f51b5'],  // Confetti colors
+            });
+
+            // Try to unmute and play audio automatically after the page loads
+            var audio = document.getElementById('background-music');
+            audio.muted = false; // Unmute
+            audio.play().catch(function(error) {
+                console.log("Autoplay blocked by browser:", error);
+                // Show a message to the user to manually start the music
+                alert('Click anywhere on the page to start the music');
+            });
+        };
+
+        // Attempt to play music upon user interaction if blocked
+        window.addEventListener('click', function() {
+            var audio = document.getElementById('background-music');
+            if (audio.paused) {
+                audio.play().catch(function(error) {
+                    console.error("Error playing the audio: ", error);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
